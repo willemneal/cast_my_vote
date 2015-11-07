@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
                 imageView.setImageBitmap(bitmap);
-                txtBytes.setText(handler2.execute().get());
+                txtBytes.setText(handler2.run());
             }
 
         } catch (Exception e) {

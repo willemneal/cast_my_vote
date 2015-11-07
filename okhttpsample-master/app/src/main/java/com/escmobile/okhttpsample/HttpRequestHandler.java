@@ -33,15 +33,13 @@ public class HttpRequestHandler {
     public String run() throws Exception {
 
         StringBuilder result = new StringBuilder();
-        List<NameValuePair> params = new LinkedList<NameValuePair>();
+        Query params = new AQuery();
+        params.add("key", API_KEY)
+                .add("address", address)
+                .add("electionId", "2000");
 
 
-        params.add(new BasicNameValuePair("key", API_KEY));
-        params.add(new BasicNameValuePair("address", address));
-        params.add(new BasicNameValuePair("electionId", "2000"));
-
-        String paramString = URLEncodedUtils.format(params, "utf-8");
-        URL url = new URL(_URL + paramString);
+        URL url = params.buildURL(_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));

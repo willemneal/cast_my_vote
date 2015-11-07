@@ -7,30 +7,25 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by genctasbasi on 11/04/15.
  */
-public class GetElectionInfo extends AsyncTask<Void, Void, String> {
+public class GetElectionInfo {
 
     // TODO: replace with your own image url
     private final String IMAGE_URL = "http://bit.ly/1DU2Zka";
 
     OkHttpClient httpClient = new OkHttpClient();
 
-    @Override
-    protected String doInBackground(Void... params) {
+    public String run() throws ExecutionException, InterruptedException {
+        GetRequestHandler getRequest = new GetRequestHandler();
 
-        HttpRequestHandler handler = new HttpRequestHandler();
+        getRequest.addParam("address", RequestHandler.address)
+                .addParam("key", RequestHandler.API_KEY)
+                .addParam("electionId", RequestHandler.electionId);
+        return getRequest.execute().get();
 
-
-
-        try {
-            return handler.run();
-
-        } catch (Exception e) {
-        }
-
-        return null;
     }
 }
