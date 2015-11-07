@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +70,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private void downloadImage() {
         OkHttpHandler handler = new OkHttpHandler();
+        GetElectionInfo handler2 = new GetElectionInfo();
 
         byte[] image = new byte[0];
 
@@ -79,11 +81,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
                 imageView.setImageBitmap(bitmap);
-                txtBytes.setText("Total bytes downloaded: " + image.length);
+                txtBytes.setText(handler2.execute().get());
             }
 
         } catch (Exception e) {
-            txtBytes.setText("Hmm sorry, something went wrong!");
+            Log.i(this.getClass().getSimpleName(),e.toString());
+            txtBytes.setText(e.toString());
         }
 
     }
