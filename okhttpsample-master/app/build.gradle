@@ -20,13 +20,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
-
     // OkHttp
     compile 'com.squareup.okhttp:okhttp:2.3.0'
-
     // Testing
     androidTestCompile 'junit:junit:4.+'
     androidTestCompile 'org.robolectric:robolectric:2.4'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'org.apache.httpcomponents:httpcomponents-client:4.5.1'
 }

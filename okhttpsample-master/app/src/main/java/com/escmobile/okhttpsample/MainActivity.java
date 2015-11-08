@@ -71,6 +71,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private void downloadImage() {
         OkHttpHandler handler = new OkHttpHandler();
         GetElectionInfo handler2 = new GetElectionInfo();
+        RegistrationForm form = new RegistrationForm();
+        String response=null;
+
 
         byte[] image = new byte[0];
 
@@ -81,11 +84,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
                 imageView.setImageBitmap(bitmap);
-                txtBytes.setText(handler2.run());
+                response = RegistrationFormSender.sendForm(form);
+                txtBytes.setText(response);
+                Log.i(this.getClass().getSimpleName(), response);
             }
 
         } catch (Exception e) {
-            Log.i(this.getClass().getSimpleName(),e.toString());
+            Log.i(this.getClass().getSimpleName(),response);
             txtBytes.setText(e.toString());
         }
 
