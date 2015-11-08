@@ -1,80 +1,82 @@
 package com.escmobile.okhttpsample;
-
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 public class RegistrationForm {
 
 
 
+    private String lang = "en";
+    private final String partner_id = "26206";
+    private boolean send_confirmation_reminder_emails = false;
+    private String collect_email_address = "no";
+    private String source_tracking_id;
+    private String partner_tracking_id;
+    private boolean short_form;
+    private String state_ovr_data;
+    private String created_at  = "11-07-2015 21:56:30";
+    private String updated_at = "11-07-2015 21:56:30";
+    private String date_of_birth;
+    private String id_number;
+    private boolean first_registration = true;
+    private String home_zip_code;
+    private boolean us_citizen = true;
+    private boolean has_state_license = true;
+    private boolean is_eighteen_or_older = true;
+    private String name_title;
+    private String first_name;
+    private String middle_name;
+    private String last_name;
+    private String name_suffix;
+    private String home_address;
+    private String home_unit;
+    private String home_city;
+    private String home_state_id;
+    private boolean has_mailing_address = false;
+    private String mailing_address;
+    private String mailing_unit;
+    private String mailing_city;
+    private String mailing_state_id;
+    private String mailing_zip_code;
+    private String race = "Decline to State";
+    private String party;
+    private String phone;
+    private String phone_type;
+    private boolean change_of_name = false;
+    private String prev_name_title;
+    private String prev_first_name;
+    private String prev_middle_name;
+    private String prev_last_name;
+    private String prev_name_suffix;
+    private boolean  change_of_address = false;
+    private String prev_address;
+    private String prev_unit;
+    private String prev_city;
+    private String prev_state_id;
+    private String prev_zip_code;
+    private boolean opt_in_email = false;
+    private boolean opt_in_sms = false;
+    private boolean opt_in_volunteer = false;
+    private boolean partner_opt_in_email = false;
+    private boolean partner_opt_in_sms = false;
+    private boolean partner_opt_in_volunteer = false;
+    private String survey_question_1;
+    private String survey_answer_1;
+    private String survey_question_2;
+    private String survey_answer_2;
+    private String callback;
+    private String custom_stop_reminders_url;
+    private boolean async;
 
-     private String lang = "en";
-     private final String partner_id = "26206";
-     private boolean send_confirmation_reminder_emails = false;
-     private String collect_email_address = "no";
-     private String source_tracking_id;
-     private String partner_tracking_id;
-     private boolean short_form;
-     private String state_ovr_data;
-     private String created_at  = "11-07-2015 21:56:30";
-     private String updated_at = "11-07-2015 21:56:30";
-     private String date_of_birth = "04-20-1992";
-     private String id_number = "ado8e2d";
-     private boolean first_registration = true;
-     private String home_zip_code = "27516";
-     private boolean us_citizen = true;
-     private boolean has_state_license = true;
-     private boolean is_eighteen_or_older = true;
-     private String name_title = "Mr.";
-     private String first_name = "joe";
-     private String middle_name = "j";
-     private String last_name = "johnson";
-     private String name_suffix;
-     private String home_address = "117 Mallette Street";
-     private String home_unit;
-     private String home_city = "Chapel Hill";
-     private String home_state_id = "NC";
-     private boolean has_mailing_address = false;
-     private String mailing_address;
-     private String mailing_unit;
-     private String mailing_city;
-     private String mailing_state_id;
-     private String mailing_zip_code;
-     private String race = "Decline to State";
-     private String party;
-     private String phone;
-     private String phone_type;
-     private boolean change_of_name = false;
-     private String prev_name_title;
-     private String prev_first_name;
-     private String prev_middle_name;
-     private String prev_last_name;
-     private String prev_name_suffix;
-     private boolean  change_of_address = false;
-     private String prev_address;
-     private String prev_unit;
-     private String prev_city;
-     private String prev_state_id;
-     private String prev_zip_code;
-     private boolean opt_in_email = false;
-     private boolean opt_in_sms = false;
-     private boolean opt_in_volunteer = false;
-     private boolean partner_opt_in_email = false;
-     private boolean partner_opt_in_sms = false;
-     private boolean partner_opt_in_volunteer = false;
-     private String survey_question_1;
-     private String survey_answer_1;
-     private String survey_question_2;
-     private String survey_answer_2;
-     private String callback;
-     private String custom_stop_reminders_url;
-     private boolean async;
+    private static RegistrationForm form;
 
-
-    public RegistrationForm() {
-
+    public static RegistrationForm getRegistrationForm(){
+        if (form ==null){
+            form = new RegistrationForm();
+        }
+        return form;
     }
+
+    
 
 
     public String toJson(){
@@ -101,6 +103,7 @@ public class RegistrationForm {
     public void setSend_confirmation_reminder_emails(boolean send_confirmation_reminder_emails) {
         this.send_confirmation_reminder_emails = send_confirmation_reminder_emails;
     }
+
 
     public String getCollect_email_address() {
         return collect_email_address;
